@@ -16,9 +16,9 @@ public class EyeData : MonoBehaviour
     //    that records the measured eye movement data.
     // 
     // ********************************************************************************************************************
-    public static string UserID = "101";       // Definte ID number such as 001, ABC001, etc.
+    public static string UserID = "****";       // Definte ID number such as 001, ABC001, etc.
     public static string Path = Directory.GetCurrentDirectory();
-    string File_Path = Directory.GetCurrentDirectory() + "\\StandardSaccade_" + UserID + ".txt";
+    string File_Path = Directory.GetCurrentDirectory() + "\\EyeData_" + UserID + ".txt";
 
     // ********************************************************************************************************************
     //
@@ -26,7 +26,6 @@ public class EyeData : MonoBehaviour
     //
     // ********************************************************************************************************************
     public static int cnt_callback = 0;
-    //public int cnt_saccade = 0, Endbuffer = 3, SaccadeTimer = 30;
     float Timeout = 1.0f, InitialTimer = 0.0f;
     private static long SaccadeEndTime = 0;
     private static long MeasureTime, CurrentTime, MeasureEndTime = 0;
@@ -300,7 +299,6 @@ public class EyeData : MonoBehaviour
                 distance_valid_C = eyeData.verbose_data.combined.convergence_distance_validity;
                 distance_C = eyeData.verbose_data.combined.convergence_distance_mm;
                 track_imp_cnt = eyeData.verbose_data.tracking_improvements.count;
-                ////track_imp_item = eyeData.verbose_data.tracking_improvements.items;
 
                 //  Convert the measured data to string data to write in a text file.
                 string value =
@@ -339,7 +337,6 @@ public class EyeData : MonoBehaviour
                     distance_valid_C.ToString() + " " +
                     distance_C.ToString() + "   " +
                     track_imp_cnt.ToString() +
-                    //track_imp_item.ToString() +
                     Environment.NewLine;
 
                 File.AppendAllText("StandardSaccade_" + UserID + ".txt", value);
